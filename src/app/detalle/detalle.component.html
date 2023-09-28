@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 padding10 ">
+      <h5>Detalle carrito</h5>
+
+      <table class="table bg-info px-20 rounded">
+        <tr>
+          <th>id</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let item of productos">
+          <td class="">{{ item.id }}</td>
+          <td class="">{{ item.descripcion }}</td>
+          <td class="">{{ item.precio }}</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+      <div>Total $: {{total}}</div>
+      <button class="btn btn-secondary" (click)="comprar()">Comprar</button>
+    </div>
+
+    <div class="col-6 padding10 " >
+      <h5>Lista productos</h5>
+
+      <table class="table bg-light px-20 table-striped rounded">
+        <tr>
+          <th>id</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let item of catalogo">
+          <td class="">{{ item.id }}</td>
+          <td class="">{{ item.descripcion }}</td>
+          <td class="">{{ item.precio }}</td>
+          <td></td>
+          <td>
+            <button class="btn btn-secondary" (click)="seleccionar(item.id)">
+              Seleccionar
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

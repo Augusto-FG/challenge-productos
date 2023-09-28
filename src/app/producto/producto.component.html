@@ -1,0 +1,64 @@
+<div class="container">
+  <form #myForm="ngForm" (submit)="submitForm(myForm)" novalidate>
+    <h2>Crear producto</h2>
+    <div class="row col-6">
+      <div class="form-group">
+        <label class="custom-control-label" for="descripcion"
+          >Descripción:
+        </label>
+        <input
+          id="descripcion"
+          type="text"
+          class="form-control"
+          name="descripcion"
+          ngModel
+          required
+        />
+      </div>
+    </div>
+
+    <div class="row col-6">
+      <div class="form-group">
+        <label class="custom-control-label" for="precio">Precio: </label>
+        <input
+          id="precio"
+          type="text"
+          class="form-control"
+          name="precio"
+          ngModel
+          required
+        />
+      </div>
+    </div>
+    <div *ngIf="isSubmitted && myForm.invalid">
+      <p>Por favor seleccione un valor</p>
+    </div>
+    <br />
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-danger btn-lg btn-block margin10">
+      Crear
+    </button>
+  </form>
+  <!-- Form ends -->
+
+  <br />
+  <table class="table bg-light px-20">
+    <tr>
+      <th>id</th>
+      <th>Nombre</th>
+      <th>Precio</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let producto of productos">
+      <td class="">{{ producto.id }}</td>
+      <td class="">{{ producto.descripcion }}</td>
+      <td class="">{{ producto.precio }}</td>
+      <td></td>
+      <td>
+        <button class="btn btn-secondary" (click)="eliminar(producto.id)">
+          Eliminar
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>

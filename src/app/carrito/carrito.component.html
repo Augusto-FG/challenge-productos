@@ -1,0 +1,87 @@
+<div class="container">
+
+
+    <form
+      #myForm="ngForm"
+      (submit)="submitForm(myForm)"
+      novalidate
+    >
+      <h2>Crear carrito</h2>
+      <!-- tipo -->
+      <div>
+        <input
+        id="estado"
+        type="hidden"
+        class="custom-control-input"
+        name="estado"
+        ngModel="ABIERTO"
+        
+      />
+        <input
+          id="comun"
+          type="radio"
+          class="custom-control-input"
+          value="COMUN"
+          name="tipo"
+          ngModel
+          required
+        />
+        <label class="custom-control-label" for="comun">Comun</label>
+      </div>
+      <div>
+        <input
+          id="fechaEspecial"
+          type="radio"
+          class="custom-control-input"
+          value="FECHA_ESPECIAL"
+          name="tipo"
+          ngModel
+          required
+        />
+        <label class="custom-control-label" for="fechaEspecial"
+          >Por fecha Especial</label
+        >
+      </div>
+      <div class="">
+        <input
+          id="vip"
+          type="radio"
+          class="custom-control-input"
+          value="VIP"
+          name="tipo"
+          ngModel
+          required
+        />
+        <label class="custom-control-label" for="vip">VIP</label>
+      </div>
+      <div *ngIf="isSubmitted && myForm.invalid">
+        <p>Por favor seleccione un valor</p>
+      </div>
+      <br>
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-danger btn-lg btn-block margin10">
+        Crear
+      </button>
+    </form>
+    <!-- Form ends -->
+    
+    <br>
+    <table class="table bg-light px-20">
+      <tr>
+        <th>id</th>
+        <th>Nombre</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let carrito of carritos">
+        <td class="">{{ carrito.id }}</td>
+        <td class="">{{ carrito.tipo }}</td>
+        <td class="">{{ carrito.estado }}</td>
+        <td></td>
+        <td>
+          <button class="btn btn-secondary" (click)="eliminar(carrito.id)">Eliminar</button>
+          <button *ngIf="carrito.estado != 'CERRADO' " class="btn btn-secondary" (click)="seleccionar(carrito.id)">Seleccionar</button>
+          </td>
+          
+      </tr>
+    </table>
+    </div>

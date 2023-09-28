@@ -1,0 +1,19 @@
+.padding10 {
+    padding: 10px;
+}
+
+.margin10 {
+    margin: 10px;
+}
+
+th {
+    padding: 8px;
+}
+
+td {
+    padding: 8px;
+}
+
+.rounded {
+    border-radius: 10px;
+}
